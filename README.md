@@ -1,2 +1,2 @@
 # MeuCondo
-Sistema de gerenciamento de condomínios
+Este projeto foi desenvolvido para a matéria de Sistemas de Informação na UnB, com o objetivo de facilitar a comunicação entre moradores e administradores de condomínios. Utilizando PHP, MySQL, HTML e CSS, o sistema permite o cadastro de moradores, consulta de pendências financeiras, agendamento de serviços e visualização de avisos. A plataforma visa otimizar o gerenciamento do condomínio, tornando as interações mais eficientes e organizadas.
