@@ -132,7 +132,7 @@
 <header>
     <div class="cabecalho">
         <button>        
-            <a href="login.php">
+            <a href="sistema.php">
                 <img src="images/logo.png" alt="Page Home">
             </a>       
         </button>
@@ -167,7 +167,7 @@
                     <input type="text" name="email" id="email" class="inputUser">
                 </div>
             </div>
-            <input type="submit" name="submit" id="submit">  <!-- Corrigido: Botão dentro do form -->
+            <a href = "sistema.php"><input type="submit" name="submit" id="submit"></a>
         </form>
     </div>
 
