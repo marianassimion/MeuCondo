@@ -8,9 +8,10 @@
         $telefone = $_POST['telefone'];
         $nascimento = $_POST['nascimento'];
         $email = $_POST['email'];
+        $senha = preg_replace('/\D/', '', $cpf); // Remove tudo que não é número
 
-        $result = mysqli_query($conexao, "INSERT INTO moradores(nome,cpf,telefone,nascimento,email) 
-        VALUES('$nome', '$cpf', '$telefone', '$nascimento', '$email')");
+        $result = mysqli_query($conexao, "INSERT INTO moradores(nome,cpf,telefone,nascimento,email,senha) 
+        VALUES('$nome', '$cpf', '$telefone', '$nascimento', '$email', '$senha')");
 
     }
     
@@ -116,11 +117,13 @@
 
         #submit:hover{
             background-color: white;
-            border:#254011;
+            border: 1px solid #254011;
             color: #254011;
             width: 100px;
             height: 30px;
             border-radius: 8px;
+            cursor:pointer;
+
         }
 
     </style>
@@ -129,7 +132,9 @@
 <header>
     <div class="cabecalho">
         <button>        
-            <img src="images/logo.png" alt="Page Home">        
+            <a href="login.php">
+                <img src="images/logo.png" alt="Page Home">
+            </a>       
         </button>
     </div>
 </header>

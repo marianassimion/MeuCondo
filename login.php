@@ -66,6 +66,7 @@
         .Campos img {
             width: 25px;
             height: 25px;
+            padding: 0;
         }
 
         .CampoCpf,
@@ -86,9 +87,10 @@
             outline: none;
             margin-left: 10px;
             font-family: inherit; 
+            width:400px;
         }
 
-        .Acessar button{
+        .inputSubmit{
             font-family: 'Roboto', sans-serif;
             background-color: #254011;
             width: 30%;
@@ -101,8 +103,14 @@
             padding: 8px;
         }
 
+
+        a{
+            color:white;
+            text-decoration:none;
+
+        }
+
         .EsqueceuSenha {
-            margin-top: 20px;
             font-size: 0.9rem;
             text-align: center;
             color: white;
@@ -119,35 +127,27 @@
     </div>
 
     <div class="BlocoLogin">
+
         <div class="Titulo">
             <p>Login</p>
         </div>
 
-        <div class="Campos">
+        <form action="testeLogin.php" method="POST">
+            <div class="Campos">
+                <div class="CampoCpf">
+                    <img src="images/cadeado.png" alt="Cadeado Login">
+                    <input type="text" name="loginAdm" placeholder="Login">
+                </div>
 
-            <div class="CampoCpf">
-                <img src="images/cadeado.png" alt="Cadeado Login">
-                <form>
-                    <input type="text" name="loginAdm" id="loginAdm" class="loginAdm" required>
-                    <label for="fname"></label>
-
-                </form>
+                <div class="CampoSenha"> 
+                    <img src="images/pessoa.png" alt="Pessoa Login">
+                    <input type="text" name="senhaAdm" placeholder="Senha">
+                </div>
             </div>
-
-            <div class="CampoSenha"> 
-                <img src="images/pessoa.png" alt="Pessoa Login">
-                <form>
-                    <input type="text" name="senha" id="senha" class="senhaAdm" required>
-                    <label for="fname"></label>
-                </form>
+            <div class="Acessar">
+                <input class ="inputSubmit" type = "submit" name = "submit" value = "Acessar" id="submit">
             </div>
-
-        </div>
-
-        <div class="Acessar">
-            <button>Acessar</button>
-        </div>
-
+        </form>
     </div>
 
     <div class="EsqueceuSenha">
