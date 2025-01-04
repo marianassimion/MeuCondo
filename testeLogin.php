@@ -6,6 +6,7 @@ session_start();
         $loginAdm = $_POST['loginAdm'];
         $senhaAdm = $_POST['senhaAdm'];
 
+
         // print_r('Login administrador: '. $loginAdm);
         // print_r('<br>');
         // print_r('Senha administrador: '. $senhaAdm);
@@ -17,7 +18,8 @@ session_start();
         if (mysqli_num_rows($result) < 1){
             unset($_SESSION['loginAdm']);
             unset($_SESSION['senhaAdm']);
-            
+
+
             header('Location: login.php');
         }
 
