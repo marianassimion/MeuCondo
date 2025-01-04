@@ -64,6 +64,7 @@
         }
 
         .box{
+            justify-content: space-between;
             margin: 80px 20px 20px;
             padding: 10px;
             border: 1px solid #254011;
@@ -100,6 +101,62 @@
             border-radius: 5px;
             border: 1px solid #254011;
         }
+        
+        .anexo{
+            margin-left: 10px;
+            margin-bottom: 6px;
+            width: 160px;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: #254011;
+            border:none;
+            color: white;
+            height: 30px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .anexo:hover{
+            background-color: white;
+            border: 1px solid #254011;
+            color: #254011;
+            border-radius: 8px;
+            cursor:pointer;
+        }
+
+        .foto_perfil {
+            margin-left: 85%;
+            display: flex; 
+            flex-direction: column;
+            position: fixed;
+        }
+
+        .foto_perfil img{
+            height: 150px;
+            width: 130px;
+            border-radius: 8px;
+            border: 1px solid #254011;
+        }
+
+        .foto_perfil button{
+            width: 130px;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: #254011;
+            border:none;
+            color: white;
+            height: 30px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .foto_perfil button:hover{
+            background-color: white;
+            border: 1px solid #254011;
+            color: #254011;
+            border-radius: 8px;
+            cursor:pointer;
+        }
 
         .enviar{
             align-self:flex-end;
@@ -107,6 +164,8 @@
         }
 
         #submit{
+            font-weight: bold;
+            font-size: 16px;
             background-color: #254011;
             border:none;
             color: white;
@@ -123,9 +182,7 @@
             height: 30px;
             border-radius: 8px;
             cursor:pointer;
-
         }
-
     </style>
 </head>
 
@@ -140,9 +197,12 @@
 </header>
 
 <body>
-    
     <div class="box">
         <form action="formulario.php" method="POST"> 
+            <div class = "foto_perfil">
+                <img src="images/perfil.png" alt="Foto de Perfil">
+                <button>Adicionar foto</button>
+            </div>
             <legend>Dados Pessoais</legend>
             <br>
             <div class="campos">
@@ -150,6 +210,7 @@
                     <label for="nome">Nome completo*</label>
                     <input type="text" name="nome" id="nome" class="inputUser" required>
                 </div>
+                
                 <div class="inputBox">
                     <label for="cpf">CPF*</label>
                     <input type="text" name="cpf" id="cpf" class="inputUser" required>
@@ -166,10 +227,13 @@
                     <label for="email">E-mail</label>
                     <input type="text" name="email" id="email" class="inputUser">
                 </div>
+                <div class="inputBox">
+                    <label for="licenca">Licença-médica</label>
+                    <button class="anexo">Adicionar anexo</button>
+                </div>
             </div>
             <a href = "sistema.php"><input type="submit" name="submit" id="submit"></a>
         </form>
     </div>
-
 </body>
 </html>

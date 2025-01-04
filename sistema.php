@@ -40,6 +40,8 @@
             align-items: center;
             padding: 0 20px;
             z-index: 1000;
+            justify-content: space-between;
+
         }
 
         .cabecalho button{
@@ -54,6 +56,11 @@
             height: auto;
         }
 
+        .cabecalho p{
+            color:white;
+            margin-right:3%;
+        }
+        
         .acima{
             margin-top:6%;
             display:flex;
@@ -118,7 +125,12 @@
                 <img src="images/logo.png" alt="Page Home">
             </a>       
         </button>
-    </div>
+        <p>
+            <?php 
+                print_r('Sessão ativa: '.$logado);
+            ?>
+        </p>
+</div>
 </header>
 
 <body>
