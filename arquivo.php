@@ -1,31 +1,9 @@
-<?php
-    if(isset($_POST['submit'])){ 
-
-        include_once('config.php');
-
-        $nome = $_POST['nome'];
-        $cpf = $_POST['cpf'];
-        $telefone = $_POST['telefone'];
-        $nascimento = $_POST['nascimento'];
-        $email = $_POST['email'];
-        $senha = preg_replace('/\D/', '', $cpf); // Remove tudo que não é número
-
-        $result = mysqli_query($conexao, "INSERT INTO moradores(nome,cpf,telefone,nascimento,email,senha) 
-        VALUES('$nome', '$cpf', '$telefone', '$nascimento', '$email', '$senha')");
-
-    }
-    
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Cadastro</title>
-
-    <!-- Link para a fonte Roboto -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
+    <title>Upload de Foto</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif; /* Define a fonte Roboto para todos os elementos */
@@ -108,7 +86,7 @@
         }
 
         .foto_perfil {
-            margin-left: 80%;
+            margin-left: 85%;
             display: flex; 
             flex-direction: column;
             position: fixed;
@@ -176,65 +154,12 @@
         }
     </style>
 </head>
-
-<header>
-    <div class="cabecalho">
-        <button>        
-            <a href="sistema.php">
-                <img src="images/logo.png" alt="Page Home">
-            </a>       
-        </button>
-    </div>
-</header>
-
 <body>
-    <div class="box">
-        <form action="formulario.php" method="POST"> 
-
-            <div class="foto_perfil">
-                <img src="images/perfil.png" alt="Foto de Perfil" id="foto-preview">
-                <input type="file" id="file" name="file" accept="image/*" style="display: none;">
-                <label for="file" class="custom-upload">Adicionar foto</label>
-                <span id="file-name">Nenhuma foto selecionada</span>
-            </div>
-
-
-            <legend>Dados Pessoais</legend>
-            <br>
-            <div class="campos">
-                <div class="inputBox">
-                    <label for="nome">Nome completo*</label>
-                    <input type="text" name="nome" id="nome" class="inputUser" required>
-                </div>
-                
-                <div class="inputBox">
-                    <label for="cpf">CPF*</label>
-                    <input type="text" name="cpf" id="cpf" class="inputUser" required>
-                </div>
-                <div class="inputBox">
-                    <label for="telefone">Telefone Celular*</label>
-                    <input type="tel" name="telefone" id="telefone" class="inputUser" required>
-                </div>
-                <div class="inputBox">
-                    <label for="nascimento">Data de Nascimento*</label>
-                    <input type="date" name="nascimento" id="nascimento" class="inputUser" required>
-                </div>
-                <div class="inputBox">
-                    <label for="email">E-mail</label>
-                    <input type="text" name="email" id="email" class="inputUser">
-                </div>
-
-                <div class="licenca">
-                    <div class="inputBox">
-                        <label for="file">Licença-médica</label>
-                    </div>
-                    <input type="file" id="file" name="file" required>                
-                </div>
-
-                
-            </div>
-            <a href = "sistema.php"><input type="submit" name="submit" id="submit"></a>
-        </form>
+    <div class="foto_perfil">
+        <img src="images/perfil.png" alt="Foto de Perfil" id="foto-preview">
+        <input type="file" id="file" name="file" accept="image/*" style="display: none;">
+        <label for="file">Adicionar foto</label>
+        <span id="file-name">Nenhuma foto selecionada</span>
     </div>
 
     <script>
@@ -258,7 +183,6 @@
                 fotoPreview.src = "images/perfil.png"; // Voltar para a imagem padrão
             }
         });
-
     </script>
 </body>
 </html>
