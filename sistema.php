@@ -134,37 +134,41 @@
 </header>
 
 <body>
-
     <div class = "acima">
         <h1>Moradores cadastrados</h1>
         <a href="formulario.php">
             <img src="images/mais.png" alt="Adicionar">
         </a>   
-
     </div>
 
     <div class="crud">
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col">id</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">E-mail</th>
-
+                <th scope="col">Endereço</th>
                 </tr>
             </thead>
             
             <tbody>
                 <?php
-                    while($user_data = mysqli_fetch_assoc($result)){
+                    while($user_data = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        echo "<td>".$user_data['id'];
-                        echo "<td>".$user_data['nome'];
-                        echo "<td>".$user_data['telefone'];
-                        echo "<td>".$user_data['email'];                       
-                        echo "<tr>";
+                        echo "<td>".$user_data['nome']."</td>";
+                        echo "<td>".$user_data['telefone']."</td>";
+                        echo "<td>".$user_data['email']."</td>";
+                        
+                        // Verifica se casa é null ou vazio
+                        $casa = empty($user_data['casa']) ? "-" : $user_data['casa'];
+                        $bloco = empty($user_data['bloco']) ? "-" : $user_data['bloco'];
+                        $rua = empty($user_data['rua']) ? "-" : $user_data['rua'];
+                    
+                        echo "<td>Rua ".$rua.", Casa ".$casa.", Bloco ".$bloco."</td>";
+                        echo "</tr>";
                     }
+                    
                 ?>
             </tbody>
         </table>

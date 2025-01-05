@@ -9,11 +9,16 @@
         $nascimento = $_POST['nascimento'];
         $email = $_POST['email'];
         $senha = preg_replace('/\D/', '', $cpf); // Remove tudo que não é número
+        $cep = $_POST['cep'];
+        $rua = $_POST['rua'];
+        $casa = $_POST['casa'];
+        $bloco = $_POST['bloco'];
 
-        $result = mysqli_query($conexao, "INSERT INTO moradores(nome,cpf,telefone,nascimento,email,senha) 
-        VALUES('$nome', '$cpf', '$telefone', '$nascimento', '$email', '$senha')");
+        $result = mysqli_query($conexao, "INSERT INTO moradores(nome,cpf,telefone,nascimento,email,senha,cep,rua,casa,bloco) 
+        VALUES('$nome', '$cpf', '$telefone', '$nascimento', '$email', '$senha', '$cep','$rua', '$casa','$bloco')");
+        header('Location: sistema.php');
 
-    }
+}
     
 ?>
 <!DOCTYPE html>
@@ -35,7 +40,7 @@
             overflow-x: hidden; 
             display: flex; 
             flex-direction: column;
-            height: 100vh;
+            height: 112vh;
         }
 
         .cabecalho {
@@ -63,12 +68,18 @@
             height: auto;
         }
 
+        .cabecalho p{
+            color: white;
+            font-weight: 900;
+            font-size:x-large;
+        }
+
         .box {
             justify-content: space-between;
             margin: 80px 20px 20px;
             padding: 10px;
             border: 1px solid #254011;
-            border-radius: 10px;            
+            border-radius: 10px;         
         }
 
         .box legend {
@@ -108,12 +119,13 @@
         }
 
         .foto_perfil {
-            margin-left: 80%;
+            margin-left: 82%;
             display: flex; 
             flex-direction: column;
-            position: fixed;
             align-items: center;
             text-align: center;
+            position: absolute;
+
         }
 
         .foto_perfil img {
@@ -164,7 +176,7 @@
             border: none;
             color: white;
             width: 100px;
-            height: 30px;
+            height: 40px;
             border-radius: 8px;
         }
 
@@ -174,6 +186,30 @@
             color: #254011;
             cursor: pointer;
         }
+
+        #cancelar{
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: none;
+            color: #254011;
+            border: 1px solid  #254011;
+            width: 100px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;      
+        }
+
+        .bt_enviar {
+            margin-top: 10px;
+            margin-right: 1%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+
     </style>
 </head>
 
@@ -184,29 +220,28 @@
                 <img src="images/logo.png" alt="Page Home">
             </a>       
         </button>
+        <p>Cadastro de morador</p>
     </div>
 </header>
 
 <body>
     <div class="box">
         <form action="formulario.php" method="POST"> 
-
-            <div class="foto_perfil">
-                <img src="images/perfil.png" alt="Foto de Perfil" id="foto-preview">
-                <input type="file" id="file" name="file" accept="image/*" style="display: none;">
-                <label for="file" class="custom-upload">Adicionar foto</label>
-                <span id="file-name">Nenhuma foto selecionada</span>
+            <div class="cima">
+                <legend>Dados Pessoais</legend>
+                <div class="foto_perfil">
+                    <img src="images/perfil.png" alt="Foto de Perfil" id="foto-preview">
+                    <input type="file" id="file" name="file" accept="image/*" style="display: none;">
+                    <label for="file" class="custom-upload">Adicionar foto</label>
+                    <span id="file-name">Nenhuma foto selecionada</span>
+                </div>
             </div>
-
-
-            <legend>Dados Pessoais</legend>
             <br>
             <div class="campos">
                 <div class="inputBox">
                     <label for="nome">Nome completo*</label>
                     <input type="text" name="nome" id="nome" class="inputUser" required>
                 </div>
-                
                 <div class="inputBox">
                     <label for="cpf">CPF*</label>
                     <input type="text" name="cpf" id="cpf" class="inputUser" required>
@@ -223,7 +258,6 @@
                     <label for="email">E-mail</label>
                     <input type="text" name="email" id="email" class="inputUser">
                 </div>
-
                 <div class="licenca">
                     <div class="inputBox">
                         <label for="file">Licença-médica</label>
@@ -231,12 +265,34 @@
                     <input type="file" id="file" name="file" required>                
                 </div>
 
-                
+                <legend>Endereço</legend>
+                <br>
+                <div class="inputBox">
+                    <label for="cep">CEP*</label>
+                    <input type="text" name="cep" id="cep" class="inputUser" required>
+                </div>
+                <div class="inputBox">
+                    <label for="rua">Rua</label>
+                    <input type="text" name="rua" id="rua" class="inputUser" required>
+                </div>
+                <div class="inputBox">
+                    <label for="casa">Casa</label>
+                    <input type="text" name="casa" id="casa" class="inputUser" required>
+                </div>
+                <div class="inputBox">
+                    <label for="bloco">Bloco</label>
+                    <input type="text" name="bloco" id="bloco" class="inputUser" required>
+                </div>
             </div>
-            <a href = "sistema.php"><input type="submit" name="submit" id="submit"></a>
-        </form>
     </div>
-
+            <div class="bt_enviar">
+                <a href="sistema.php" id="cancelar">Cancelar</a>
+                <button type="submit" id="submit" name="submit">Enviar</button>
+            </div>
+        </form>
+    
+    
+    
     <script>
         const fileInput = document.getElementById("file");
         const fileNameDisplay = document.getElementById("file-name");
@@ -258,7 +314,6 @@
                 fotoPreview.src = "images/perfil.png"; // Voltar para a imagem padrão
             }
         });
-
     </script>
 </body>
 </html>
