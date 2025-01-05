@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SISTEMA</title>
+    <title>Moradores cadastrados</title>
     <style>
         body{
             font-family: 'Roboto', sans-serif; /* Define a fonte Roboto para todos os elementos */
